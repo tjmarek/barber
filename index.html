@@ -216,7 +216,7 @@
       color: var(--accent);
       background:
         linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.92) 65%, #08080a 100%),
-        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=80") center center / cover no-repeat;
+        url("images/AdobeStock_329631704.jpeg") center center / cover no-repeat;
     }
 
     .hero-inner {
@@ -342,17 +342,17 @@
       color: var(--text-muted);
     }
 
-    /* ---------------- GALLERY / SERVICES TILE STRIP ---------------- */
+    /* ---------------- GALLERY STRIP ---------------- */
 
     .strip {
       display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr;
+      grid-template-columns: 1.3fr 1.2fr;
       min-height: 420px;
+      background: var(--bg-alt);
     }
 
     .strip-left {
-      background: var(--bg-alt);
-      padding: 70px 8vw;
+      padding: 70px 8vw 70px 8vw;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -375,63 +375,64 @@
       max-width: 440px;
     }
 
-    .strip-left .btn {
-      margin-top: 12px;
-      align-self: flex-start;
+    .strip-gallery {
+      padding: 40px 8vw 40px 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      align-items: center;
+      justify-items: stretch;
     }
 
-    .strip-tile {
+    .strip-gallery-item {
       position: relative;
       overflow: hidden;
-      background-size: cover;
-      background-position: center;
+      border-radius: 4px;
+      background: #000;
     }
 
-    .strip-tile::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.2));
-      transition: 0.35s ease;
+    .strip-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.03);
+      transition: transform 0.35s ease;
+      display: block;
     }
 
-    .strip-tile-inner {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 40px 32px;
-      z-index: 1;
+    .strip-gallery-item:hover img {
+      transform: scale(1.08);
     }
 
-    .strip-tile-label {
-      font-size: 12px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      color: var(--accent-soft);
-    }
-
-    .strip-tile-title {
-      font-family: "Oswald", sans-serif;
-      font-size: 24px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-    }
-
-    .strip-tile:hover::after {
-      background: linear-gradient(to top, rgba(255,255,255,0.06), rgba(0,0,0,0.2));
-    }
-
-    /* ---------------- VIDEO / BOOKING BAND ---------------- */
+    /* ---------------- BOOKING BAND ---------------- */
 
     .video-band {
       padding-block: 110px;
       text-align: center;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-        url("https://images.unsplash.com/photo-1599351431202-1e0f0137899e?auto=format&fit=crop&w=1800&q=80") center center / cover no-repeat;
+      position: relative;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .video-band::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("images/AdobeStock_245305798.jpeg") center center / cover no-repeat;
+      z-index: 0;
+    }
+
+    .video-band::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.78);
+      z-index: 1;
+    }
+
+    .video-band > * {
+      position: relative;
+      z-index: 2;
     }
 
     .video-band .section-heading p {
@@ -470,9 +471,9 @@
 
     .about-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1.4fr 1.1fr;
       gap: 40px;
-      align-items: flex-start;
+      align-items: center;
     }
 
     .about-left h2 {
@@ -484,8 +485,24 @@
       margin-top: 20px;
     }
 
-    .about-col p + p {
-      margin-top: 16px;
+    .about-photo {
+      border-radius: 4px;
+      overflow: hidden;
+      background: #000;
+      max-height: 520px;
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.02);
+      transition: transform 0.4s ease;
+    }
+
+    .about-photo:hover img {
+      transform: scale(1.06);
     }
 
     /* ---------------- BARBERS / SERVICES CARDS ---------------- */
@@ -545,7 +562,12 @@
       margin-top: 6px;
     }
 
-    /* ---------------- DETAILED PRICING (SERVICES + PRICING) ---------------- */
+    .services-cta {
+      margin-top: 36px;
+      text-align: center;
+    }
+
+    /* ---------------- DETAILED PRICING ---------------- */
 
     .shaves {
       background: var(--bg-main);
@@ -623,7 +645,7 @@
       letter-spacing: 0.18em;
     }
 
-    /* ---------------- TESTIMONIALS ---------------- */
+    /* ---------------- TESTIMONIALS SLIDER ---------------- */
 
     .testimonial-band {
       padding-block: 120px;
@@ -631,11 +653,34 @@
       background:
         linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.92)),
         url("https://images.unsplash.com/photo-1542051841857-5ed38dcb4c85?auto=format&fit=crop&w=1800&q=80") center center / cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-slider {
+      max-width: 900px;
+      margin: 40px auto 0;
+      position: relative;
+    }
+
+    .testimonial-slide {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .testimonial-slide.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      position: relative;
     }
 
     .testimonial-quote {
-      max-width: 900px;
-      margin: 40px auto 18px;
       font-size: 20px;
       line-height: 1.7;
       text-transform: uppercase;
@@ -648,6 +693,24 @@
       letter-spacing: 0.23em;
       text-transform: uppercase;
       color: var(--accent-soft);
+    }
+
+    .testimonial-dots {
+      margin-top: 26px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .testimonial-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+    }
+
+    .testimonial-dot.is-active {
+      background: #fff;
     }
 
     /* ---------------- FOOTER ---------------- */
@@ -676,14 +739,13 @@
 
     @media (max-width: 1024px) {
       .strip {
-        grid-template-columns: 1.3fr 1fr;
-        grid-template-rows: 260px 260px;
+        grid-template-columns: 1fr;
       }
-      .strip-tile:nth-child(3) {
-        grid-column: span 2;
+      .strip-gallery {
+        padding: 20px 8vw 50px;
       }
       .about-layout {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
       }
       .barber-grid,
       .pricing-columns {
@@ -732,19 +794,8 @@
       .info-card:last-child {
         border-bottom: none;
       }
-      .strip {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-      }
-      .strip-left {
-        padding-inline: 6vw;
-        padding-block: 60px;
-      }
       section {
         padding-inline: 6vw;
-      }
-      .about-layout {
-        grid-template-columns: 1fr;
       }
       .barber-grid,
       .pricing-columns {
@@ -790,7 +841,7 @@
         With over 20 years behind the chair, Cynthia Rivera specializes in men’s grooming—delivering clean, sharp looks through precision haircuts, fades, beard trims, and detailed shaping and lining.
       </p>
       <div class="hero-cta-row">
-        <!-- Replace href with her real Square booking URL -->
+        <!-- Replace with real Square booking URL -->
         <button class="btn" onclick="window.open('https://squareup.com/appointments','_blank')">
           Book an Appointment
         </button>
@@ -824,7 +875,7 @@
     </div>
   </section>
 
-  <!-- STRIP: ABOUT + GALLERY / PRICING TILES -->
+  <!-- GALLERY STRIP -->
   <section class="strip" id="gallery">
     <div class="strip-left">
       <div class="accent-sub">Being a barber is about taking care of people</div>
@@ -832,29 +883,32 @@
       <p class="strip-text">
         The Gentlemen’s Quarters is a private studio designed for men who value detail. Every cut, fade, and beard service is tailored to your face shape, lifestyle, and personal style—never rushed, never generic.
       </p>
-      <button class="btn btn-outline" onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'})">
-        More About Cynthia
-      </button>
+      <p class="strip-text">
+        Below are a few real client results—before and afters, and finished looks that show Cynthia’s attention to shape, balance, and clean finishing.
+      </p>
     </div>
 
-    <!-- GALLERY TILE -->
-    <div class="strip-tile" style="background-image:url('https://images.unsplash.com/photo-1519741347686-229b5a50b699?auto=format&fit=crop&w=1100&q=80');">
-      <div class="strip-tile-inner">
-        <div class="strip-tile-label">Gallery</div>
-        <div class="strip-tile-title">Before & After</div>
+    <div class="strip-gallery">
+      <!-- Before & After 1 -->
+      <div class="strip-gallery-item">
+        <img src="images/2025-11-02.webp" alt="Before and after haircut 1" />
       </div>
-    </div>
-
-    <!-- PRICING TILE -->
-    <div class="strip-tile" style="background-image:url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1100&q=80');">
-      <div class="strip-tile-inner">
-        <div class="strip-tile-label">Pricing</div>
-        <div class="strip-tile-title">Straightforward & Fair</div>
+      <!-- Before & After 2 -->
+      <div class="strip-gallery-item">
+        <img src="images/2025-11-02 (1).webp" alt="Before and after haircut 2" />
+      </div>
+      <!-- After-only 1 (replace filename with your real one) -->
+      <div class="strip-gallery-item">
+        <img src="images/after-1.webp" alt="Finished style 1" />
+      </div>
+      <!-- After-only 2 (replace filename with your real one) -->
+      <div class="strip-gallery-item">
+        <img src="images/after-2.webp" alt="Finished style 2" />
       </div>
     </div>
   </section>
 
-  <!-- VIDEO / BOOKING BAND (BOOKING SECTION CONTINUATION) -->
+  <!-- BOOKING BAND -->
   <section class="video-band">
     <div class="section-heading">
       <div class="eyebrow">Booking</div>
@@ -880,27 +934,20 @@
         <p>
           Founded and operated by master barber <strong>Cynthia Rivera</strong>, The Gentlemen’s Quarters blends classic barbering traditions with a clean, modern aesthetic. Every detail—from the lighting to the music—is curated to create a calm, focused space where the only agenda is your best look.
         </p>
-      </div>
-      <div class="about-col">
         <p>
           With over two decades of experience, Cynthia specializes in men’s precision haircuts, skin fades, beard design, and detailed shaping and lining. Her approach is equal parts technical and artistic, combining head shape, hair growth patterns, and personal style to craft a cut that grows out clean.
         </p>
         <p>
-          Whether you’re maintaining a timeless look or refining something new, she’ll walk you through options, maintenance, and styling so you know exactly how to wear it between visits.
-        </p>
-      </div>
-      <div class="about-col">
-        <p>
           The studio operates on an appointment-only basis to respect your time and ensure every service gets the attention it deserves. No walk-ins, no double-booking—just you, the chair, and a meticulous barber focused on the details.
         </p>
-        <p>
-          From quick clean-ups to full transformations, The Gentlemen’s Quarters is where your cut, fade, and beard game are brought up to standard—and kept there.
-        </p>
+      </div>
+      <div class="about-photo">
+        <img src="images/2025-04-28.webp" alt="Cynthia Rivera in the studio" />
       </div>
     </div>
   </section>
 
-  <!-- OUR BARBERS / SERVICES (CENTERED ON CYNTHIA BUT MIMICS LAYOUT) -->
+  <!-- SERVICES -->
   <section class="barbers" id="services">
     <div class="section-heading">
       <div class="eyebrow">Services</div>
@@ -911,10 +958,10 @@
     </div>
 
     <div class="barber-grid">
-      <!-- Card 1 -->
+      <!-- Precision Haircuts -->
       <article class="barber-card">
         <div class="barber-photo">
-          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80" alt="Precision haircut" />
+          <img src="images/2025-05-05 (2).webp" alt="Precision haircut" />
         </div>
         <div class="barber-content">
           <div class="barber-name">Precision Haircuts</div>
@@ -922,27 +969,33 @@
         </div>
       </article>
 
-      <!-- Card 2 -->
+      <!-- Fades & Tapers -->
       <article class="barber-card">
         <div class="barber-photo">
-          <img src="https://images.unsplash.com/photo-1542051841857-5ed38dcb4c85?auto=format&fit=crop&w=900&q=80" alt="Skin fade" />
+          <img src="images/2025-05-05 copy.webp" alt="Skin fade and taper" />
         </div>
         <div class="barber-content">
-          <div class="barber-name">Fades & Tapers</div>
+          <div class="barber-name">Fades &amp; Tapers</div>
           <div class="barber-role">Skin · Low · Mid · High</div>
         </div>
       </article>
 
-      <!-- Card 3 -->
+      <!-- Beard & Shaping -->
       <article class="barber-card">
         <div class="barber-photo">
-          <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=80" alt="Beard trim and line up" />
+          <img src="images/2025-05-05 (1).webp" alt="Beard trim and line up" />
         </div>
         <div class="barber-content">
-          <div class="barber-name">Beard & Shaping</div>
-          <div class="barber-role">Detailed Lining & Design</div>
+          <div class="barber-name">Beard &amp; Shaping</div>
+          <div class="barber-role">Detailed Lining &amp; Design</div>
         </div>
       </article>
+    </div>
+
+    <div class="services-cta">
+      <button class="btn" onclick="window.open('https://squareup.com/appointments','_blank')">
+        Book Now
+      </button>
     </div>
   </section>
 
@@ -972,8 +1025,8 @@
 
         <div class="pricing-row">
           <div>
-            <div class="pricing-label">Refresh & Finish</div>
-            <div class="pricing-meta">Line clean-up & style between cuts</div>
+            <div class="pricing-label">Refresh &amp; Finish</div>
+            <div class="pricing-meta">Line clean-up &amp; style between cuts</div>
           </div>
           <div class="pricing-price">$20</div>
         </div>
@@ -995,7 +1048,7 @@
         <div class="pricing-row">
           <div>
             <div class="pricing-label">Signature Cut</div>
-            <div class="pricing-meta">Consultation, cut & style</div>
+            <div class="pricing-meta">Consultation, cut &amp; style</div>
           </div>
           <div class="pricing-price">$55</div>
         </div>
@@ -1025,7 +1078,7 @@
         <div class="pricing-row">
           <div>
             <div class="pricing-label">Beard Trim</div>
-            <div class="pricing-meta">Shape, bulk removal & comb finish</div>
+            <div class="pricing-meta">Shape, bulk removal &amp; comb finish</div>
           </div>
           <div class="pricing-price">$30</div>
         </div>
@@ -1033,7 +1086,7 @@
         <div class="pricing-row">
           <div>
             <div class="pricing-label">Beard Design</div>
-            <div class="pricing-meta">Detailed shaping & line work</div>
+            <div class="pricing-meta">Detailed shaping &amp; line work</div>
           </div>
           <div class="pricing-price">$40</div>
         </div>
@@ -1041,7 +1094,7 @@
         <div class="pricing-row">
           <div>
             <div class="pricing-label">Cut + Beard Combo</div>
-            <div class="pricing-meta">Signature haircut & full beard service</div>
+            <div class="pricing-meta">Signature haircut &amp; full beard service</div>
           </div>
           <div class="pricing-price">$80</div>
         </div>
@@ -1049,21 +1102,62 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- TESTIMONIALS (SLIDER) -->
   <section class="testimonial-band" id="testimonials">
     <div class="section-heading">
       <div class="eyebrow">What Clients Say</div>
     </div>
-    <div class="testimonial-quote">
-      “Cynthia is the only person I trust with my hair and beard. Every appointment is consistent, detailed, and somehow better than the last. I always walk out feeling sharp.”
+
+    <div class="testimonial-slider" id="testimonialSlider">
+      <div class="testimonial-slide is-active">
+        <div class="testimonial-quote">
+          “Cynthia is the only person I trust with my hair and beard. Every appointment is consistent, detailed, and somehow better than the last. I always walk out feeling sharp.”
+        </div>
+        <div class="testimonial-name">— Long-Time Client</div>
+      </div>
+
+      <div class="testimonial-slide">
+        <div class="testimonial-quote">
+          “She really listens. I showed her one photo and she adjusted it to fit my hair and face. Best fade I’ve had in Austin.”
+        </div>
+        <div class="testimonial-name">— First-Time Guest</div>
+      </div>
+
+      <div class="testimonial-slide">
+        <div class="testimonial-quote">
+          “The studio is clean, private, and calm. It’s the opposite of a rushed walk-in barbershop. You feel taken care of from the moment you sit down.”
+        </div>
+        <div class="testimonial-name">— Regular Client</div>
+      </div>
+
+      <div class="testimonial-slide">
+        <div class="testimonial-quote">
+          “My beard has never looked this good. She shaped it to match my jawline and showed me exactly how to maintain it between visits.”
+        </div>
+        <div class="testimonial-name">— Beard Client</div>
+      </div>
+
+      <div class="testimonial-slide">
+        <div class="testimonial-quote">
+          “Professional, on time, and extremely detailed. If you care about the little things in your haircut, this is where you go.”
+        </div>
+        <div class="testimonial-name">— Business Professional</div>
+      </div>
     </div>
-    <div class="testimonial-name">— Long-Time Client</div>
+
+    <div class="testimonial-dots" id="testimonialDots">
+      <div class="testimonial-dot is-active"></div>
+      <div class="testimonial-dot"></div>
+      <div class="testimonial-dot"></div>
+      <div class="testimonial-dot"></div>
+      <div class="testimonial-dot"></div>
+    </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div>© 2025 The Gentlemen's Quarters · Cynthia Rivera</div>
-    <div>Site design preview · Replace photos & booking link before going live</div>
+    <div>Built with ♡ by TJ Marek</div>
   </footer>
 
   <script>
@@ -1096,7 +1190,6 @@
       });
     });
 
-    // IntersectionObserver to update active nav link
     const sections = document.querySelectorAll("section[id]");
     const observer = new IntersectionObserver(
       entries => {
@@ -1111,8 +1204,29 @@
       },
       { rootMargin: "-55% 0px -40% 0px", threshold: 0 }
     );
-
     sections.forEach(section => observer.observe(section));
+
+    // Testimonials slider (5 slides, 10s each)
+    const slides = document.querySelectorAll(".testimonial-slide");
+    const dots = document.querySelectorAll(".testimonial-dot");
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    const SLIDE_INTERVAL = 10000; // 10 seconds
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("is-active", i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("is-active", i === index);
+      });
+      currentSlide = index;
+    }
+
+    setInterval(() => {
+      const nextIndex = (currentSlide + 1) % totalSlides;
+      showSlide(nextIndex);
+    }, SLIDE_INTERVAL);
   </script>
 </body>
 </html>
