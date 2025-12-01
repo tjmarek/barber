@@ -5,6 +5,9 @@
   <title>The Gentlemen's Quarters – Cynthia Rivera</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="images/Gemini_Generated_Image_4qqf544qqf544qqf-removebg-preview.png" />
+
   <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
@@ -21,6 +24,7 @@
       --border-soft: rgba(255,255,255,0.12);
       --accent-line: #e0e0e0;
       --transition-fast: 0.25s ease;
+      --gold: #f5c249;
     }
 
     * {
@@ -290,6 +294,21 @@
       color: #000;
     }
 
+    .hero-logo-mark {
+      position: absolute;
+      bottom: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      opacity: 0.9;
+    }
+
+    .hero-logo-mark img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     .hero-bottom-tagline {
       position: absolute;
       bottom: 40px;
@@ -331,7 +350,7 @@
 
     .info-main {
       font-family: "Oswald", sans-serif;
-      font-size: 18px;
+      font-size: 16px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
@@ -375,33 +394,91 @@
       max-width: 440px;
     }
 
-    .strip-gallery {
-      padding: 40px 8vw 40px 0;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      align-items: center;
-      justify-items: stretch;
-    }
-
-    .strip-gallery-item {
+    .strip-gallery-slider {
       position: relative;
+      padding: 40px 8vw 40px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
-      border-radius: 4px;
-      background: #000;
     }
 
-    .strip-gallery-item img {
+    .gallery-slider-inner {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      height: 320px;
+    }
+
+    .gallery-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateX(8px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .gallery-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transform: scale(1.03);
-      transition: transform 0.35s ease;
-      display: block;
+      border-radius: 4px;
     }
 
-    .strip-gallery-item:hover img {
-      transform: scale(1.08);
+    .gallery-slide.is-active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .gallery-controls {
+      position: absolute;
+      inset-inline: 0;
+      bottom: -40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-inline: 6px;
+    }
+
+    .gallery-arrows {
+      display: flex;
+      gap: 8px;
+    }
+
+    .gallery-arrow {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.5);
+      background: transparent;
+      color: #fff;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .gallery-arrow:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .gallery-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .gallery-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+    }
+
+    .gallery-dot.is-active {
+      background: #fff;
     }
 
     /* ---------------- BOOKING BAND ---------------- */
@@ -489,20 +566,23 @@
       border-radius: 4px;
       overflow: hidden;
       background: #000;
-      max-height: 520px;
+      max-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .about-photo img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
-      transform: scale(1.02);
+      object-fit: cover;
+      transform: none;
       transition: transform 0.4s ease;
     }
 
     .about-photo:hover img {
-      transform: scale(1.06);
+      transform: scale(1.03);
     }
 
     /* ---------------- BARBERS / SERVICES CARDS ---------------- */
@@ -661,6 +741,7 @@
       max-width: 900px;
       margin: 40px auto 0;
       position: relative;
+      padding-inline: 30px;
     }
 
     .testimonial-slide {
@@ -680,11 +761,18 @@
       position: relative;
     }
 
+    .testimonial-stars {
+      font-size: 16px;
+      letter-spacing: 4px;
+      margin-bottom: 16px;
+      color: #ffffff;
+    }
+
     .testimonial-quote {
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1.7;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.03em;
+      text-transform: none;
     }
 
     .testimonial-name {
@@ -695,11 +783,42 @@
       color: var(--accent-soft);
     }
 
-    .testimonial-dots {
-      margin-top: 26px;
+    .testimonial-controls {
+      margin-top: 30px;
       display: flex;
       justify-content: center;
-      gap: 8px;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .testimonial-arrows {
+      display: flex;
+      gap: 10px;
+    }
+
+    .testimonial-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.6);
+      background: transparent;
+      color: #fff;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .testimonial-arrow:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .testimonial-dots {
+      display: flex;
+      gap: 6px;
     }
 
     .testimonial-dot {
@@ -711,6 +830,45 @@
 
     .testimonial-dot.is-active {
       background: #fff;
+    }
+
+    .google-review-badge {
+      margin-top: 34px;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.25);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .google-logo {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #3367d6;
+      font-weight: 700;
+    }
+
+    .google-stars {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    .google-link {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
     }
 
     /* ---------------- FOOTER ---------------- */
@@ -741,7 +899,7 @@
       .strip {
         grid-template-columns: 1fr;
       }
-      .strip-gallery {
+      .strip-gallery-slider {
         padding: 20px 8vw 50px;
       }
       .about-layout {
@@ -782,7 +940,10 @@
         padding-inline: 6vw;
       }
       .hero-bottom-tagline {
-        display: none;
+        bottom: 32px;
+      }
+      .hero-logo-mark {
+        bottom: 60px;
       }
       .info-strip {
         grid-template-columns: 1fr;
@@ -801,6 +962,12 @@
       .pricing-columns {
         grid-template-columns: 1fr;
       }
+      .testimonial-slider {
+        padding-inline: 8px;
+      }
+      .testimonial-quote {
+        font-size: 16px;
+      }
       footer {
         flex-direction: column;
         align-items: flex-start;
@@ -814,14 +981,14 @@
   <header class="site-header">
     <div class="brand-mark">
       <div class="brand-title">The Gentlemen's Quarters</div>
-      <div class="brand-sub">Cynthia Rivera · Master Barber</div>
+      <div class="brand-sub">Cynthia Rivera · Austin Barber</div>
     </div>
 
     <nav class="nav-links" id="siteNav">
       <a href="#booking" class="is-active">Booking</a>
-      <a href="#services">Services</a>
       <a href="#gallery">Gallery</a>
       <a href="#about">About</a>
+      <a href="#services">Services</a>
       <a href="#pricing">Pricing</a>
       <a href="#testimonials">Testimonials</a>
     </nav>
@@ -834,21 +1001,24 @@
   <!-- HERO / BOOKING -->
   <section class="hero" id="booking">
     <div class="hero-inner">
-      <div class="hero-eyebrow">Modern Men's Grooming Studio</div>
-      <h1 class="hero-title">We Know Your Style Better</h1>
+      <div class="hero-eyebrow">Modern Men's Grooming</div>
+      <h1 class="hero-title">Precision Cuts. Distinguished Style.</h1>
       <div class="hero-sub">Precision Cuts · Fades · Beards</div>
       <p class="hero-copy">
         With over 20 years behind the chair, Cynthia Rivera specializes in men’s grooming—delivering clean, sharp looks through precision haircuts, fades, beard trims, and detailed shaping and lining.
       </p>
       <div class="hero-cta-row">
-        <!-- Replace with real Square booking URL -->
-        <button class="btn" onclick="window.open('https://squareup.com/appointments','_blank')">
+        <button class="btn" onclick="window.open('https://app.squareup.com/appointments/book/7g6slalylcdx3a/L86SQ0C594Y41/start?hl=en-US&gei=ee4tad7yJ-OyqtsP9pXt0Q4&rwg_token=ACgRB3cHX5loBMNXX4W7IhTsgKO-Fb9GbHRksiIAZIV3J8_mwBU904--QvneQbRLSZNDWICD6UsEOVY1AiV-MdrXuAxnsfqdNw%3D%3D','_blank')">
           Book an Appointment
         </button>
         <button class="btn btn-outline" onclick="document.querySelector('#services').scrollIntoView({behavior:'smooth'})">
           View Services
         </button>
       </div>
+    </div>
+
+    <div class="hero-logo-mark">
+      <img src="images/Gemini_Generated_Image_4qqf544qqf544qqf-removebg-preview.png" alt="The Gentlemen's Quarters logo" />
     </div>
 
     <div class="hero-bottom-tagline">
@@ -860,18 +1030,18 @@
   <section class="info-strip" aria-label="Studio information">
     <div class="info-card">
       <div class="info-label">Address</div>
-      <div class="info-main">The Gentlemen's Quarters</div>
-      <div class="info-sub">Austin, Texas · Exact location provided upon booking.</div>
+      <div class="info-main">Inside Phenix Salon Suites</div>
+      <div class="info-sub">14005 US-183 Suite 1200, Austin, TX 78717, United States</div>
     </div>
     <div class="info-card">
-      <div class="info-label">Call / Text</div>
-      <div class="info-main">(000) 000-0000</div>
-      <div class="info-sub">By appointment only. Text preferred for quickest response.</div>
+      <div class="info-label">Phone</div>
+      <div class="info-main">(512) 771-9533</div>
+      <div class="info-sub">Call or text for questions. Online booking preferred.</div>
     </div>
     <div class="info-card">
       <div class="info-label">Hours</div>
-      <div class="info-main">Tue – Sat</div>
-      <div class="info-sub">Typical hours 10am – 7pm · Subject to availability.</div>
+      <div class="info-main">Mon – Sat · 8:00am – 7:30pm</div>
+      <div class="info-sub">Subject to availability · By appointment only.</div>
     </div>
   </section>
 
@@ -888,22 +1058,33 @@
       </p>
     </div>
 
-    <div class="strip-gallery">
-      <!-- Before & After 1 -->
-      <div class="strip-gallery-item">
-        <img src="images/2025-11-02.webp" alt="Before and after haircut 1" />
-      </div>
-      <!-- Before & After 2 -->
-      <div class="strip-gallery-item">
-        <img src="images/2025-11-02 (1).webp" alt="Before and after haircut 2" />
-      </div>
-      <!-- After-only 1 (replace filename with your real one) -->
-      <div class="strip-gallery-item">
-        <img src="images/after-1.webp" alt="Finished style 1" />
-      </div>
-      <!-- After-only 2 (replace filename with your real one) -->
-      <div class="strip-gallery-item">
-        <img src="images/after-2.webp" alt="Finished style 2" />
+    <div class="strip-gallery-slider" id="gallerySlider">
+      <div class="gallery-slider-inner">
+        <div class="gallery-slide is-active">
+          <img src="images/2025-11-02.webp" alt="Before and after haircut 1" />
+        </div>
+        <div class="gallery-slide">
+          <img src="images/2025-11-02 (1).webp" alt="Before and after haircut 2" />
+        </div>
+        <div class="gallery-slide">
+          <img src="images/2025-05-05 (5).webp" alt="Finished style 1" />
+        </div>
+        <div class="gallery-slide">
+          <img src="images/2025-05-05 (4).webp" alt="Finished style 2" />
+        </div>
+
+        <div class="gallery-controls">
+          <div class="gallery-arrows">
+            <button class="gallery-arrow" id="galleryPrev" aria-label="Previous style">‹</button>
+            <button class="gallery-arrow" id="galleryNext" aria-label="Next style">›</button>
+          </div>
+          <div class="gallery-dots" id="galleryDots">
+            <div class="gallery-dot is-active"></div>
+            <div class="gallery-dot"></div>
+            <div class="gallery-dot"></div>
+            <div class="gallery-dot"></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -918,7 +1099,7 @@
       </p>
     </div>
     <div class="video-cta">
-      <button class="btn btn-circle" onclick="window.open('https://squareup.com/appointments','_blank')">
+      <button class="btn btn-circle" onclick="window.open('https://app.squareup.com/appointments/book/7g6slalylcdx3a/L86SQ0C594Y41/start?hl=en-US&gei=ee4tad7yJ-OyqtsP9pXt0Q4&rwg_token=ACgRB3cHX5loBMNXX4W7IhTsgKO-Fb9GbHRksiIAZIV3J8_mwBU904--QvneQbRLSZNDWICD6UsEOVY1AiV-MdrXuAxnsfqdNw%3D%3D','_blank')">
         <span>Book Now</span>
         <span class="circle">↗</span>
       </button>
@@ -932,7 +1113,7 @@
         <div class="eyebrow">About</div>
         <h2>The Gentlemen's Quarters Studio</h2>
         <p>
-          Founded and operated by master barber <strong>Cynthia Rivera</strong>, The Gentlemen’s Quarters blends classic barbering traditions with a clean, modern aesthetic. Every detail—from the lighting to the music—is curated to create a calm, focused space where the only agenda is your best look.
+          Founded and operated by <strong>Cynthia Rivera</strong>, The Gentlemen’s Quarters blends classic barbering traditions with a clean, modern aesthetic. Every detail—from the lighting to the music—is curated to create a calm, focused space where the only agenda is your best look.
         </p>
         <p>
           With over two decades of experience, Cynthia specializes in men’s precision haircuts, skin fades, beard design, and detailed shaping and lining. Her approach is equal parts technical and artistic, combining head shape, hair growth patterns, and personal style to craft a cut that grows out clean.
@@ -993,7 +1174,7 @@
     </div>
 
     <div class="services-cta">
-      <button class="btn" onclick="window.open('https://squareup.com/appointments','_blank')">
+      <button class="btn" onclick="window.open('https://app.squareup.com/appointments/book/7g6slalylcdx3a/L86SQ0C594Y41/start?hl=en-US&gei=ee4tad7yJ-OyqtsP9pXt0Q4&rwg_token=ACgRB3cHX5loBMNXX4W7IhTsgKO-Fb9GbHRksiIAZIV3J8_mwBU904--QvneQbRLSZNDWICD6UsEOVY1AiV-MdrXuAxnsfqdNw%3D%3D','_blank')">
         Book Now
       </button>
     </div>
@@ -1110,47 +1291,111 @@
 
     <div class="testimonial-slider" id="testimonialSlider">
       <div class="testimonial-slide is-active">
+        <div class="testimonial-stars">★★★★★</div>
         <div class="testimonial-quote">
-          “Cynthia is the only person I trust with my hair and beard. Every appointment is consistent, detailed, and somehow better than the last. I always walk out feeling sharp.”
+          “Cynthia is the best barber I've ever had. I'm very picky with who I let cut my hair, but after my first fade from her I never went anywhere else. She is professional, funny, kind, and she gives the best fade I've ever gotten.”
         </div>
-        <div class="testimonial-name">— Long-Time Client</div>
+        <div class="testimonial-name">— JP Cifelli</div>
       </div>
 
       <div class="testimonial-slide">
+        <div class="testimonial-stars">★★★★★</div>
         <div class="testimonial-quote">
-          “She really listens. I showed her one photo and she adjusted it to fit my hair and face. Best fade I’ve had in Austin.”
+          “Cynthia gets it right. Every time. She’s been cutting my hair at least 6-7 years and it always looks great. Service is excellent. Cynthia’s process is outstanding and cleanliness in the room is top notch. I always leave in a better mood than I arrived in. Highly recommended.”
         </div>
-        <div class="testimonial-name">— First-Time Guest</div>
+        <div class="testimonial-name">— Jeremy Thompson</div>
       </div>
 
       <div class="testimonial-slide">
+        <div class="testimonial-stars">★★★★★</div>
         <div class="testimonial-quote">
-          “The studio is clean, private, and calm. It’s the opposite of a rushed walk-in barbershop. You feel taken care of from the moment you sit down.”
+          “Cynthia has been cutting my hair for years and is the only person I trust. She has an amazing set up and always does a fantastic job and on top of that. She totally hooked me up with a late impromptu haircut to make sure I was looking good for a first date! If you’re going to anybody besides Cynthia, you should totally reevaluate your decisions!”
         </div>
-        <div class="testimonial-name">— Regular Client</div>
+        <div class="testimonial-name">— Drew Barker</div>
       </div>
 
       <div class="testimonial-slide">
+        <div class="testimonial-stars">★★★★★</div>
         <div class="testimonial-quote">
-          “My beard has never looked this good. She shaped it to match my jawline and showed me exactly how to maintain it between visits.”
+          “I’ve been getting my haircut from Cynthia for a very long time (20 yrs) now and have never been disappointed. She has the skills like no other stylist/barber I’ve ever been to. Seriously, no one has ever been able to give me such a great fade as she does. Plus, her professionalism sets her way apart from the competition.”
         </div>
-        <div class="testimonial-name">— Beard Client</div>
+        <div class="testimonial-name">— Gerry</div>
       </div>
 
       <div class="testimonial-slide">
+        <div class="testimonial-stars">★★★★★</div>
         <div class="testimonial-quote">
-          “Professional, on time, and extremely detailed. If you care about the little things in your haircut, this is where you go.”
+          “Cynthia is AWESOME! She is very punctual, professional and pays close attention to the details. I have had my son and my hair cut by her for years and have never had a bad experience. I highly recommend!”
         </div>
-        <div class="testimonial-name">— Business Professional</div>
+        <div class="testimonial-name">— Ryan Wolslager</div>
+      </div>
+
+      <div class="testimonial-slide">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">
+          “I've been seeing Cynthia now for 3 years and I wish I would have found her sooner! She is very experienced and provides quality cuts consistently. So long as she lives in Austin, Cynthia is the only barber I'll ever go to.”
+        </div>
+        <div class="testimonial-name">— Zachary Kaufman</div>
+      </div>
+
+      <div class="testimonial-slide">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">
+          “Cynthia has been cutting my hair for over 3 years and I wouldn’t go anywhere else. She’s been in the hair biz for over a decade and it shows. Her attention to detail is impressive, and her speed is a testament to her experience. Never had a bad cut going to see her, and I highly recommend her to everyone looking for a stylist!”
+        </div>
+        <div class="testimonial-name">— Eric</div>
+      </div>
+
+      <div class="testimonial-slide">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">
+          “My fiancé has been seeing Cynthia for over five years now, and I honestly can’t thank her enough for the way she’s enhanced his look.”
+        </div>
+        <div class="testimonial-name">— Kelly Walker</div>
+      </div>
+
+      <div class="testimonial-slide">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">
+          “Hands down one of the best haircuts I’ve had in a long time. Cynthia was chill, listened to what I wanted, and actually delivered — no guessing or rushing through it. The shop had a good vibe, not pretentious, just clean and comfortable.”
+        </div>
+        <div class="testimonial-name">— E Ak</div>
+      </div>
+
+      <div class="testimonial-slide">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">
+          “I've been getting my haircut by Cynthia for years now and she has always given top of the line service. Great cuts, great attitude, clean shop, I have no complaints. I always got a skin fade and a short buzz cut on top and she took so much care to be sure she got every little detail perfect, and she gives a beautiful fade. When I started to grow my hair out, she had no problem adjusting and has given me great haircuts every time regardless of what length my hair was or what new style I was going for. She's a well-rounded, professional, experienced barber. I would recommend her to anyone.”
+        </div>
+        <div class="testimonial-name">— TJ Marek</div>
       </div>
     </div>
 
-    <div class="testimonial-dots" id="testimonialDots">
-      <div class="testimonial-dot is-active"></div>
-      <div class="testimonial-dot"></div>
-      <div class="testimonial-dot"></div>
-      <div class="testimonial-dot"></div>
-      <div class="testimonial-dot"></div>
+    <div class="testimonial-controls">
+      <div class="testimonial-arrows">
+        <button class="testimonial-arrow" id="testimonialPrev" aria-label="Previous review">‹</button>
+        <button class="testimonial-arrow" id="testimonialNext" aria-label="Next review">›</button>
+      </div>
+      <div class="testimonial-dots" id="testimonialDots">
+        <div class="testimonial-dot is-active"></div>
+        <div class="testimonial-dot"></div>
+        <div class="testimonial-dot"></div>
+        <div class="testimonial-dot"></div>
+        <div class="testimonial-dot"></div>
+        <div class="testimonial-dot"></div>
+        <div class="testimonial-dot"></div>
+        <div class="testimonial-dot"></div>
+        <div class="testimonial-dot"></div>
+        <div class="testimonial-dot"></div>
+      </div>
+    </div>
+
+    <div class="google-review-badge">
+      <div class="google-logo">G</div>
+      <div class="google-stars">★★★★★</div>
+      <a class="google-link" href="https://www.google.com/search?q=Gentalmens+Quarters&oq=ge&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDsyEAgCEC4YxwEYsQMY0QMYgAQyBggDEEUYPDIGCAQQRRg8MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEHNTgyajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0xaedd5f7f1925591:0xb78d51d027d85c05,1,,,," target="_blank" rel="noopener noreferrer">
+        See what other happy customers have to say
+      </a>
     </div>
   </section>
 
@@ -1206,27 +1451,117 @@
     );
     sections.forEach(section => observer.observe(section));
 
-    // Testimonials slider (5 slides, 10s each)
-    const slides = document.querySelectorAll(".testimonial-slide");
-    const dots = document.querySelectorAll(".testimonial-dot");
-    let currentSlide = 0;
-    const totalSlides = slides.length;
-    const SLIDE_INTERVAL = 10000; // 10 seconds
+    // Gallery slider
+    (function () {
+      const slides = document.querySelectorAll(".gallery-slide");
+      const dots = document.querySelectorAll("#galleryDots .gallery-dot");
+      const prevBtn = document.getElementById("galleryPrev");
+      const nextBtn = document.getElementById("galleryNext");
+      let current = 0;
+      const total = slides.length;
+      const INTERVAL = 7000;
+      let timer;
 
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("is-active", i === index);
+      function showGallerySlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("is-active", i === index);
+        });
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("is-active", i === index);
+        });
+        current = index;
+      }
+
+      function nextGallery() {
+        const next = (current + 1) < total ? current + 1 : 0;
+        showGallerySlide(next);
+      }
+
+      function prevGallery() {
+        const prev = (current - 1) >= 0 ? current - 1 : total - 1;
+        showGallerySlide(prev);
+      }
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(nextGallery, INTERVAL);
+      }
+
+      nextBtn.addEventListener("click", () => {
+        nextGallery();
+        resetTimer();
       });
+
+      prevBtn.addEventListener("click", () => {
+        prevGallery();
+        resetTimer();
+      });
+
       dots.forEach((dot, i) => {
-        dot.classList.toggle("is-active", i === index);
+        dot.addEventListener("click", () => {
+          showGallerySlide(i);
+          resetTimer();
+        });
       });
-      currentSlide = index;
-    }
 
-    setInterval(() => {
-      const nextIndex = (currentSlide + 1) % totalSlides;
-      showSlide(nextIndex);
-    }, SLIDE_INTERVAL);
+      timer = setInterval(nextGallery, INTERVAL);
+    })();
+
+    // Testimonials slider (10 slides, 10s each, with arrows)
+    (function () {
+      const slides = document.querySelectorAll(".testimonial-slide");
+      const dots = document.querySelectorAll("#testimonialDots .testimonial-dot");
+      const prevBtn = document.getElementById("testimonialPrev");
+      const nextBtn = document.getElementById("testimonialNext");
+      let current = 0;
+      const total = slides.length;
+      const INTERVAL = 10000;
+      let timer;
+
+      function showTestimonial(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("is-active", i === index);
+        });
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("is-active", i === index);
+        });
+        current = index;
+      }
+
+      function nextTestimonial() {
+        const next = (current + 1) < total ? current + 1 : 0;
+        showTestimonial(next);
+      }
+
+      function prevTestimonial() {
+        const prev = (current - 1) >= 0 ? current - 1 : total - 1;
+        showTestimonial(prev);
+      }
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(nextTestimonial, INTERVAL);
+      }
+
+      nextBtn.addEventListener("click", () => {
+        nextTestimonial();
+        resetTimer();
+      });
+
+      prevBtn.addEventListener("click", () => {
+        prevTestimonial();
+        resetTimer();
+      });
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener("click", () => {
+          showTestimonial(i);
+          resetTimer();
+        });
+      });
+
+      timer = setInterval(nextTestimonial, INTERVAL);
+    })();
   </script>
 </body>
 </html>
