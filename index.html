@@ -875,7 +875,17 @@
   .site-header {
     padding-inline: 6vw;
   }
+  
+  .brand-title {
+    font-size: 15px;    
+    letter-spacing: 0.22em;
+  }
 
+  .brand-sub {
+    font-size: 9px;      
+    letter-spacing: 0.24em;
+  }
+  
   .nav-links {
     position: fixed;
     inset-inline: 0;
@@ -898,6 +908,20 @@
 
   .nav-toggle {
     display: block;
+  }
+
+  /* Make hamburger icon dark for mobile */
+  .nav-toggle span {
+    background: #444;   /* dark gray / nearly black */
+  }
+
+  .nav-toggle.active span:nth-child(1),
+  .nav-toggle.active span:nth-child(3) {
+    background: #444;  /* ensure X icon bars stay dark */
+  }
+
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
   }
 
   .hero {
@@ -978,6 +1002,22 @@
   }
 }
 
+/* --- MOBILE FIXES: hero spacing + gallery tiles --- */
+@media (max-width: 860px) {
+  /* Make sure the gallery section stacks and tiles are tall enough */
+  #gallery.strip {
+    display: block;              /* stack children vertically */
+  }
+
+  #gallery .strip-left {
+    padding-bottom: 32px;        /* space between text and the first tile */
+  }
+
+  #gallery .strip-tile {
+    display: block;
+    min-height: 300px;           /* force visible background area */
+  }
+}
 
   </style>
 </head>
