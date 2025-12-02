@@ -299,7 +299,7 @@
       bottom: 70px;
       left: 50%;
       transform: translateX(-50%);
-      width: 75px;
+      width: 80px; /* slightly larger logo */
       opacity: 0.9;
     }
 
@@ -361,17 +361,17 @@
       color: var(--text-muted);
     }
 
-    /* ---------------- GALLERY STRIP ---------------- */
+    /* ---------------- GALLERY / SERVICES TILE STRIP ---------------- */
 
     .strip {
       display: grid;
-      grid-template-columns: 1.3fr 1.2fr;
+      grid-template-columns: 1.3fr 1fr 1fr;
       min-height: 420px;
       background: var(--bg-alt);
     }
 
     .strip-left {
-      padding: 70px 8vw 70px 8vw;
+      padding: 70px 8vw;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -383,83 +383,66 @@
       line-height: 1.1;
     }
 
+    .strip-left .accent-sub {
+      font-size: 14px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
     .strip-left .strip-text {
       max-width: 440px;
     }
 
-    .strip-gallery-slider {
-      position: relative;
-      padding: 40px 8vw 40px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+    .strip-left .btn {
+      margin-top: 12px;
+      align-self: flex-start;
     }
-    
-/* Gallery Link Section */
-    
-.gallery-links {
-  background: var(--bg-alt);
-  padding: 110px 8vw;
-}
 
-.gallery-links .section-heading p {
-  max-width: 520px;
-  margin: 18px auto 0;
-}
+    .strip-tile {
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
 
-.gallery-link-grid {
-  margin-top: 50px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
-}
+    .strip-tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.2));
+      transition: 0.35s ease;
+    }
 
-.gallery-link-item {
-  position: relative;
-  border-radius: 4px;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  min-height: 320px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .strip-tile-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px 32px;
+      z-index: 1;
+    }
 
-.gallery-link-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.78));
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 30px;
-  text-align: center;
-}
+    .strip-tile-label {
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--accent-soft);
+    }
 
-.gallery-link-overlay span {
-  font-family: "Oswald", sans-serif;
-  font-size: 16px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #ffffff;
-}
+    .strip-tile-title {
+      font-family: "Oswald", sans-serif;
+      font-size: 24px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
 
-.gallery-link-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 22px 40px rgba(0,0,0,0.7);
-}
-
-.gallery-link-item:hover .gallery-link-overlay {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.06), rgba(0,0,0,0.6));
-}
-
-@media (max-width: 900px) {
-  .gallery-link-grid {
-    grid-template-columns: 1fr;
-  }
-}
+    .strip-tile:hover::after {
+      background: linear-gradient(to top, rgba(255,255,255,0.06), rgba(0,0,0,0.2));
+    }
 
     /* ---------------- BOOKING BAND ---------------- */
 
@@ -546,10 +529,8 @@
       border-radius: 4px;
       overflow: hidden;
       background: #000;
-      max-height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      max-width: 360px;
+      margin-left: auto;
     }
 
     .about-photo img {
@@ -596,7 +577,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: top center;
+      object-position: center center; /* re-centered images */
       transform: scale(1.02);
       transition: transform 0.35s ease;
     }
@@ -871,11 +852,14 @@
 
     @media (max-width: 1024px) {
       .strip {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1.3fr 1fr;
+        grid-template-rows: 260px 260px;
       }
-      .strip-gallery-slider {
-        padding: 20px 8vw 50px;
+
+      .strip-tile:nth-child(3) {
+        grid-column: span 2;
       }
+
       .about-layout {
         grid-template-columns: 1fr;
       }
@@ -932,6 +916,12 @@
       section {
         padding-inline: 6vw;
       }
+
+      .strip {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+
       .barber-grid,
       .pricing-columns {
         grid-template-columns: 1fr;
@@ -1019,33 +1009,37 @@
     </div>
   </section>
 
- <!-- GALLERY (LINK STYLE) -->
-<section id="gallery" class="gallery-links">
-  <div class="section-heading">
-    <div class="eyebrow">Gallery</div>
-    <h2>See The Work</h2>
-    <p>
-      Explore before-and-afters and finished styles from real clients of The Gentlemen’s Quarters.
-    </p>
-  </div>
+  <!-- STRIP: GALLERY ENTRY -->
+  <section class="strip" id="gallery">
+    <div class="strip-left">
+      <div class="accent-sub">Crafted for men who value detail</div>
+      <h3>Sharp lines. Clean fades. Quiet confidence.</h3>
+      <p class="strip-text">
+        The Gentlemen’s Quarters is a private studio designed for men who value detail. Every cut, fade, and beard service is tailored to your face shape, lifestyle, and personal style—never rushed, never generic.
+      </p>
+      <button class="btn btn-outline" onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'})">
+        More About Cynthia
+      </button>
+    </div>
 
-  <div class="gallery-link-grid">
-    <a href="gallery.html" class="gallery-link-item"
-       style="background-image: url('images/2025-05-05 (4).webp');">
-      <div class="gallery-link-overlay">
-        <span>Before / After Gallery</span>
+    <!-- GALLERY TILE 1 -->
+    <a href="gallery.html" class="strip-tile"
+       style="background-image:url('images/2025-05-05 (4).webp');">
+      <div class="strip-tile-inner">
+        <div class="strip-tile-label">Gallery</div>
+        <div class="strip-tile-title">Before &amp; After</div>
       </div>
     </a>
 
-    <a href="gallery.html" class="gallery-link-item"
-       style="background-image: url('images/2025-05-05 (5).webp');">
-      <div class="gallery-link-overlay">
-        <span>Client Cuts & Styles</span>
+    <!-- GALLERY TILE 2 -->
+    <a href="gallery.html" class="strip-tile"
+       style="background-image:url('images/2025-05-05 (5).webp');">
+      <div class="strip-tile-inner">
+        <div class="strip-tile-label">Gallery</div>
+        <div class="strip-tile-title">Client Cuts &amp; Styles</div>
       </div>
     </a>
-  </div>
-</section>
-
+  </section>
 
   <!-- BOOKING BAND -->
   <section class="video-band">
@@ -1081,7 +1075,7 @@
         </p>
       </div>
       <div class="about-photo">
-        <img src="images/2025-05-05.webp" alt="Cynthia Rivera in the studio" />
+        <img src="images/IMG_4578 (1).jpg" alt="Cynthia Rivera in the studio" />
       </div>
     </div>
   </section>
@@ -1420,43 +1414,6 @@
     );
     sections.forEach(section => observer.observe(section));
 
-    // Gallery slider (manual only)
-    (function () {
-      const slides = document.querySelectorAll(".gallery-slide");
-      const dots = document.querySelectorAll("#galleryDots .gallery-dot");
-      const prevBtn = document.getElementById("galleryPrev");
-      const nextBtn = document.getElementById("galleryNext");
-      let current = 0;
-      const total = slides.length;
-
-      function showGallerySlide(index) {
-        slides.forEach((slide, i) => {
-          slide.classList.toggle("is-active", i === index);
-        });
-        dots.forEach((dot, i) => {
-          dot.classList.toggle("is-active", i === index);
-        });
-        current = index;
-      }
-
-      function nextGallery() {
-        const next = (current + 1) < total ? current + 1 : 0;
-        showGallerySlide(next);
-      }
-
-      function prevGallery() {
-        const prev = (current - 1) >= 0 ? current - 1 : total - 1;
-        showGallerySlide(prev);
-      }
-
-      nextBtn.addEventListener("click", nextGallery);
-      prevBtn.addEventListener("click", prevGallery);
-
-      dots.forEach((dot, i) => {
-        dot.addEventListener("click", () => showGallerySlide(i));
-      });
-    })();
-
     // Testimonials slider (10 slides, 20s each, with arrows + dots)
     (function () {
       const slides = document.querySelectorAll(".testimonial-slide");
@@ -1514,7 +1471,7 @@
     })();
   </script>
 
-  <!-- Google Review Badge by Shapo.io -->
+   <!-- Google Review Badge by Shapo.io -->
   <script src="https://cdn.shapo.io/js/google-badge-loader.js" data-settings="eyJwbGFjZUlkIjoiQ2hJSmtWV1M4ZmZWN1FvUkJWellKOUJSamJjIiwicGxhY2VOYW1lIjoiVGhlIEdlbnRsZW1lbidzIFF1YXJ0ZXJzIGJ5IEN5bnRoaWEgUml2ZXJhIC0gQmFyYmVyc2hvcCBpbiBBdXN0aW4iLCJwbGFjZUFkZHJlc3MiOiJJbnNpZGUgUGhlbml4IHNhbG9uIHN1aXRlcywgMTQwMDUgVVMtMTgzIHN1aXRlIDEyMDAsIEF1c3RpbiwgVFggNzg3MTcsIFVTQSIsInJhdGluZyI6NSwicmV2aWV3Q291bnQiOjY0LCJwb3NpdGlvbiI6ImJvdHRvbS1yaWdodCIsInRlbXBsYXRlIjoiZGFyayIsImJ1dHRvblRleHQiOiJMZWF2ZSBhIFJldmlldyIsImJ1dHRvbkNvbG9yIjoiIzU0NTQ1NCIsInJldmlld3MiOlt7ImF1dGhvck5hbWUiOiJKYWtlIExlcGFnZSIsImF1dGhvclBob3RvVXJsIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FMVi1ValdEZ2c0N0ptVGlqOHppNVFTSnlqc1h2OThsQV84aWJOR01Sa1Q4VTFlM29wcFFhREE9czEyOC1jMHgwMDAwMDAwMC1jYy1ycC1tbyIsInJhdGluZyI6MCwidGV4dCI6IiJ9LHsiYXV0aG9yTmFtZSI6IlRqIE1hcmVrIiwiYXV0aG9yUGhvdG9VcmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS0vQUxWLVVqVy1UM1ExWVZGZmRpU3pFZUhBaklpQ0NBOTVLcE5hZjh3RV9NYmFMVVYxUUc4c1dnX2M9czEyOC1jMHgwMDAwMDAwMC1jYy1ycC1tbyIsInJhdGluZyI6MCwidGV4dCI6IiJ9LHsiYXV0aG9yTmFtZSI6IkFsZXggTWFycXVleiIsImF1dGhvclBob3RvVXJsIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jSnpobW9wMVZjNkN1Ymg4dGY4TGkyNy1hb2VydndEUHE1eVBTSHRVU29DYnRNY0N3PXMxMjgtYzB4MDAwMDAwMDAtY2MtcnAtbW8iLCJyYXRpbmciOjAsInRleHQiOiIifSx7ImF1dGhvck5hbWUiOiJKZXJlbXkgVGhvbXBzb24iLCJhdXRob3JQaG90b1VybCI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0paYnVkYWYyMFZNd1lFUW9pMk92VWtHckh1bk50X3d6bzNfMlZFeDZicU1LVU5zZz1zMTI4LWMweDAwMDAwMDAwLWNjLXJwLW1vIiwicmF0aW5nIjowLCJ0ZXh0IjoiIn0seyJhdXRob3JOYW1lIjoiQ29keSBMYXVnaGxhbmQiLCJhdXRob3JQaG90b1VybCI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BTFYtVWpVbjNWNlM4MW1FdUhYcUJTVlZIT1ZUNFlaU1NLNXhzLTR6MTRlc3FCaVdiZnVzNEljUj1zMTI4LWMweDAwMDAwMDAwLWNjLXJwLW1vIiwicmF0aW5nIjowLCJ0ZXh0IjoiIn1dfQ=="></script>
 </body>
 </html>
