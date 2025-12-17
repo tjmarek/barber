@@ -28,7 +28,6 @@
       --border-soft: rgba(255,255,255,0.12);
       --accent-line: #e0e0e0;
       --transition-fast: 0.25s ease;
-      --glow: rgba(255,255,255,0.08);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -136,7 +135,6 @@
     .nav-links a.is-active::after { width: 60%; }
     .nav-links a:hover { opacity: 1; }
 
-    /* Image-based hamburger toggle */
     .nav-toggle {
       background: none;
       border: none;
@@ -175,7 +173,6 @@
       overflow: hidden;
     }
 
-    /* subtle hero light sweep */
     .contact-hero::after{
       content:"";
       position:absolute;
@@ -192,7 +189,6 @@
     .contact-title {
       font-size: clamp(42px, 5vw, 66px);
       line-height: 1.08;
-      text-transform: uppercase;
     }
 
     .contact-sub {
@@ -239,13 +235,6 @@
 
     .btn:hover { transform: translateY(-1px); box-shadow: 0 18px 35px rgba(0,0,0,0.6); }
 
-    .btn-outline {
-      background: transparent;
-      color: var(--accent-soft);
-      border-color: rgba(255,255,255,0.55);
-    }
-    .btn-outline:hover { background:#fff; color:#000; }
-
     .btn-circle { display:inline-flex; align-items:center; gap:12px; }
     .btn-circle .circle {
       width: 26px;
@@ -275,7 +264,7 @@
 
     .contact-layout {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 22px;
       align-items: start;
     }
@@ -401,34 +390,32 @@
       align-items: center;
       justify-content: center;
       font-size: 15px;
+      flex: 0 0 auto;
     }
 
-    /* Right column: portrait + quick notes */
+    /* Right column: portrait (NO big black border boxes) */
     .portrait {
       display: grid;
       gap: 22px;
     }
 
     .portrait-media {
-      aspect-ratio: 4 / 5;
-      display: grid;
-      place-items: center;
-      padding: 14px;
-      background: rgba(0,0,0,0.22);
+      padding: 0;
+      background: transparent;
     }
 
     .portrait-media img {
       width: 100%;
-      height: 100%;
+      height: auto;
       object-fit: contain; /* do NOT crop */
-      background: #000;
-      border-radius: 10px;
+      border-radius: 14px;
+      background: transparent;
     }
 
     .portrait-caption {
       padding: 18px 20px;
       border-top: 1px solid rgba(255,255,255,0.10);
-      background: rgba(0,0,0,0.35);
+      background: rgba(0,0,0,0.25);
     }
 
     .portrait-caption h3 {
@@ -437,10 +424,12 @@
       margin-bottom: 8px;
     }
 
+    /* Move the two mini info boxes UNDER the left main info box */
     .mini-cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
+      margin-top: 14px;
     }
 
     .mini {
@@ -458,7 +447,7 @@
 
     .mini p { font-size: 14px; line-height: 1.7; color: var(--text-muted); }
 
-    /* Full width map band with caption */
+    /* Map */
     .map-band {
       padding: 0;
       margin: 0;
@@ -514,8 +503,7 @@
       letter-spacing: 0.18em;
     }
 
-    /* ---------------- FOOTER ---------------- */
-
+    /* Footer */
     footer {
       padding: 32px 8vw 26px;
       background: #050506;
@@ -535,7 +523,6 @@
     @media (max-width: 1024px) {
       .contact-layout { grid-template-columns: 1fr; }
       .mini-cards { grid-template-columns: 1fr 1fr; }
-      .portrait-media { aspect-ratio: 16 / 10; }
     }
 
     @media (max-width: 860px) {
@@ -611,20 +598,18 @@
         Reach Cynthia directly by phone or text, or open the studio location in Maps for easy navigation.
       </p>
 
+      <!-- Removed Call/Text buttons from hero (per request) -->
       <div class="hero-cta-row">
         <button class="btn btn-circle"
           onclick="window.open('https://book.squareup.com/appointments/7g6slalylcdx3a/location/L86SQ0C594Y41/services?hl=en-US','_blank')">
           <span>Book Now</span>
           <span class="circle">↗</span>
         </button>
-
-        <a class="btn btn-outline" href="tel:+15127719533">Call</a>
-        <a class="btn btn-outline" href="sms:+15127719533">Text</a>
       </div>
     </div>
   </section>
 
-  <!-- MODERN CONTACT BODY -->
+  <!-- CONTACT BODY -->
   <section class="contact-body">
     <div class="container">
 
@@ -635,68 +620,58 @@
       </div>
 
       <div class="contact-layout">
-        <!-- Left: info glass -->
-        <div class="glass">
-          <div class="glass-inner">
-            <div class="card-head">
-              <h2>Contact Details</h2>
-              <div class="chip">Appointment Only</div>
-            </div>
-
-            <div class="kv-grid">
-              <div class="kv-item">
-                <div class="kv-label">Phone</div>
-                <div class="kv-value">
-                  <a href="tel:+15127719533">(512) 771-9533</a><br />
-                  <span style="opacity:.85;">Call or text for questions. Online booking preferred.</span>
-                </div>
-              </div>
-
-              <div class="kv-item">
-                <div class="kv-label">Hours</div>
-                <div class="kv-value">
-                  Mon – Sat · 8:00am – 8:00pm<br />
-                  <span style="opacity:.85;">Subject to availability. Hours vary by day.</span>
-                </div>
-              </div>
-
-              <div class="kv-item" style="grid-column:1 / -1;">
-                <div class="kv-label">Address</div>
-                <div class="kv-value">
-                  14005 US-183 Suite 1200, Austin, TX 78717, United States
-                </div>
-              </div>
-            </div>
-
-            <div class="actions">
-              <a class="btn-secondary" href="tel:+15127719533"><span class="ico">☎</span> Call Now</a>
-              <a class="btn-secondary" href="sms:+15127719533"><span class="ico">✉</span> Text Now</a>
-              <a class="btn-secondary"
-                 href="https://www.google.com/maps/search/?api=1&query=14005%20US-183%20suite%201200%2C%20Austin%2C%20TX%2078717"
-                 target="_blank" rel="noopener noreferrer">
-                 <span class="ico">⌁</span> Open in Maps
-              </a>
-              <a class="btn-secondary"
-                 href="https://book.squareup.com/appointments/7g6slalylcdx3a/location/L86SQ0C594Y41/services?hl=en-US"
-                 target="_blank" rel="noopener noreferrer">
-                 <span class="ico">↗</span> Book Online
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: portrait + extra “fills the page” content -->
-        <div class="portrait">
+        <!-- Left: info -->
+        <div>
           <div class="glass">
-            <div class="portrait-media">
-              <img src="images/IMG_4578 (1).jpg" alt="Cynthia Rivera in the studio" />
-            </div>
-            <div class="portrait-caption">
-              <h3>Cynthia Rivera</h3>
-              <p>Modern men’s grooming with a calm, private studio experience.</p>
+            <div class="glass-inner">
+              <div class="card-head">
+                <h2>Contact Details</h2>
+                <div class="chip">Appointment Only</div>
+              </div>
+
+              <div class="kv-grid">
+                <div class="kv-item">
+                  <div class="kv-label">Phone</div>
+                  <div class="kv-value">
+                    <a href="tel:+15127719533">(512) 771-9533</a><br />
+                    <span style="opacity:.85;">Call or text for questions. Online booking preferred.</span>
+                  </div>
+                </div>
+
+                <div class="kv-item">
+                  <div class="kv-label">Hours</div>
+                  <div class="kv-value">
+                    Mon – Sat · 8:00am – 8:00pm<br />
+                    <span style="opacity:.85;">Subject to availability. Hours vary by day.</span>
+                  </div>
+                </div>
+
+                <div class="kv-item" style="grid-column:1 / -1;">
+                  <div class="kv-label">Address</div>
+                  <div class="kv-value">
+                    14005 US-183 Suite 1200, Austin, TX 78717, United States
+                  </div>
+                </div>
+              </div>
+
+              <div class="actions">
+                <a class="btn-secondary" href="tel:+15127719533"><span class="ico">☎</span> Call Now</a>
+                <a class="btn-secondary" href="sms:+15127719533"><span class="ico">✉</span> Text Now</a>
+                <a class="btn-secondary"
+                   href="https://www.google.com/maps/search/?api=1&query=14005%20US-183%20suite%201200%2C%20Austin%2C%20TX%2078717"
+                   target="_blank" rel="noopener noreferrer">
+                   <span class="ico">⌁</span> Open in Maps
+                </a>
+                <a class="btn-secondary"
+                   href="https://book.squareup.com/appointments/7g6slalylcdx3a/location/L86SQ0C594Y41/services?hl=en-US"
+                   target="_blank" rel="noopener noreferrer">
+                   <span class="ico">↗</span> Book Online
+                </a>
+              </div>
             </div>
           </div>
 
+          <!-- moved mini cards UNDER the left main info box -->
           <div class="mini-cards">
             <div class="mini">
               <h3>Parking</h3>
@@ -708,12 +683,26 @@
             </div>
           </div>
         </div>
+
+        <!-- Right: image (no black border box styling) -->
+        <div class="portrait">
+          <div class="glass" style="background: transparent; border-color: rgba(255,255,255,0.10);">
+            <div class="portrait-media">
+              <img src="images/IMG_4578 (1).jpg" alt="Cynthia Rivera in the studio" />
+            </div>
+            <div class="portrait-caption">
+              <h3>Cynthia Rivera</h3>
+              <p>Modern men’s grooming with a calm, private studio experience.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
   </section>
 
-  <!-- MAP (full width) -->
+  <!-- MAP -->
   <section class="map-band" aria-label="Map">
     <div class="map-container">
       <iframe
