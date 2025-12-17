@@ -6,12 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- FAVICON -->
-<link rel="icon" href="images/fav.png" type="image/png">
-<link rel="shortcut icon" href="images/fav.png" type="image/png">
+  <link rel="icon" href="images/fav.png" type="image/png">
+  <link rel="shortcut icon" href="images/fav.png" type="image/png">
 
   <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
- 
+
+  <!-- Preload hero image -->
   <link rel="preload" as="image" href="images/AdobeStock_329631704.jpeg">
 
   <style>
@@ -179,7 +180,6 @@
   }
 
   /* Image-based hamburger toggle */
-
   .nav-toggle {
     background: none;
     border: none;
@@ -1019,9 +1019,9 @@
       min-height: 300px;
     }
   }
-</style>
-
+  </style>
 </head>
+
 <body>
 
   <!-- HEADER -->
@@ -1041,9 +1041,8 @@
     </nav>
 
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-    <img src="images/icons8-menu-48.png" alt="Menu" class="nav-icon">
+      <img src="images/icons8-menu-48.png" alt="Menu" class="nav-icon">
     </button>
-
   </header>
 
   <!-- HERO / BOOKING -->
@@ -1106,23 +1105,24 @@
       </button>
     </div>
 
- <!-- GALLERY TILE 1 - Before & After -->
-<a href="gallery.html#before-after" class="strip-tile"
-   style="background-image:url('images/2025-11-02 (1).webp');">
-  <div class="strip-tile-inner">
-    <div class="strip-tile-label">Gallery</div>
-    <div class="strip-tile-title">Before &amp; After</div>
-  </div>
-</a>
+    <!-- GALLERY TILE 1 - Before & After -->
+    <a href="gallery.html#before-after" class="strip-tile"
+       style="background-image:url('images/2025-11-02 (1).webp');">
+      <div class="strip-tile-inner">
+        <div class="strip-tile-label">Gallery</div>
+        <div class="strip-tile-title">Before &amp; After</div>
+      </div>
+    </a>
 
-<!-- GALLERY TILE 2 - Client Cuts & Styles -->
-<a href="gallery.html#cuts" class="strip-tile"
-   style="background-image:url('images/2025-05-05 (5).webp');">
-  <div class="strip-tile-inner">
-    <div class="strip-tile-label">Gallery</div>
-    <div class="strip-tile-title">Client Cuts &amp; Styles</div>
-  </div>
-</a>
+    <!-- GALLERY TILE 2 - Client Cuts & Styles -->
+    <a href="gallery.html#cuts" class="strip-tile"
+       style="background-image:url('images/2025-05-05 (5).webp');">
+      <div class="strip-tile-inner">
+        <div class="strip-tile-label">Gallery</div>
+        <div class="strip-tile-title">Client Cuts &amp; Styles</div>
+      </div>
+    </a>
+  </section><!-- ✅ IMPORTANT: closes the gallery strip section -->
 
   <!-- BOOKING BAND -->
   <section class="video-band">
@@ -1445,17 +1445,18 @@
       </a>
     </div>
   </section>
-<!-- GOOGLE MAP SECTION -->
-<section class="map-section">
-  <div class="map-container">
-    <iframe
-      src="https://maps.google.com/maps?width=1920&height=600&hl=en&q=14005%20US-183%20suite%201200%2C%20Austin%2C%20TX%2078717&t=&z=14&ie=UTF8&iwloc=B&output=embed"
-      frameborder="0"
-      allowfullscreen=""
-      loading="lazy">
-    </iframe>
-  </div>
-</section>
+
+  <!-- GOOGLE MAP SECTION -->
+  <section class="map-section">
+    <div class="map-container">
+      <iframe
+        src="https://maps.google.com/maps?width=1920&height=600&hl=en&q=14005%20US-183%20suite%201200%2C%20Austin%2C%20TX%2078717&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+        frameborder="0"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
@@ -1566,7 +1567,7 @@
     })();
   </script>
 
-   <!-- Google Review Badge by Shapo.io -->
-  <script src="https://cdn.shapo.io/js/google-badge-loader.js" data-settings="eyJwbGFjZUlkIjoiQ2hJSmtWV1M4ZmZWN1FvUkJWellKOUJSamJjIiwicGxhY2VOYW1lIjoiVGhlIEdlbnRsZW1lbidzIFF1YXJ0ZXJzIGJ5IEN5bnRoaWEgUml2ZXJhIC0gQmFyYmVyc2hvcCBpbiBBdXN0aW4iLCJwbGFjZUFkZHJlc3MiOiJJbnNpZGUgUGhlbml4IHNhbG9uIHN1aXRlcywgMTQwMDUgVVMtMTgzIHN1aXRlIDEyMDAsIEF1c3RpbiwgVFggNzg3MTcsIFVTQSIsInJhdGluZyI6NSwicmV2aWV3Q291bnQiOjY0LCJwb3NpdGlvbiI6ImJvdHRvbS1yaWdodCIsInRlbXBsYXRlIjoiZGFyayIsImJ1dHRvblRleHQiOiJMZWF2ZSBhIFJldmlldyIsImJ1dHRvbkNvbG9yIjoiIzU0NTQ1NCIsInJldmlld3MiOlt7ImF1dGhvck5hbWUiOiJKYWtlIExlcGFnZSIsImF1dGhvclBob3RvVXJsIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FMVi1ValdEZ2c0N0ptVGlqOHppNVFTSnlqc1h2OThsQV84aWJOR01Sa1Q4VTFlM29wcFFhREE9czEyOC1jMHgwMDAwMDAwMC1jYy1ycC1tbyIsInJhdGluZyI6MCwidGV4dCI6IiJ9LHsiYXV0aG9yTmFtZSI6IlRqIE1hcmVrIiwiYXV0aG9yUGhvdG9VcmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS0vQUxWLVVqVy1UM1ExWVZGZmRpU3pFZUhBaklpQ0NBOTVLcE5hZjh3RV9NYmFMVVYxUUc4c1dnX2M9czEyOC1jMHgwMDAwMDAwMC1jYy1ycC1tbyIsInJhdGluZyI6MCwidGV4dCI6IiJ9LHsiYXV0aG9yTmFtZSI6IkFsZXggTWFycXVleiIsImF1dGhvclBob3RvVXJsIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jSnpobW9wMVZjNkN1Ymg4dGY4TGkyNy1hb2VydndEUHE1eVBTSHRVU29DYnRNY0N3PXMxMjgtYzB4MDAwMDAwMDAtY2MtcnAtbW8iLCJyYXRpbmciOjAsInRleHQiOiIifSx7ImF1dGhvck5hbWUiOiJKZXJlbXkgVGhvbXBzb24iLCJhdXRob3JQaG90b1VybCI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0paYnVkYWYyMFZNd1lFUW9pMk92VWtHckh1bk50X3d6bzNfMlZFeDZicU1LVU5zZz1zMTI4LWMweDAwMDAwMDAwLWNjLXJwLW1vIiwicmF0aW5nIjowLCJ0ZXh0IjoiIn0seyJhdXRob3JOYW1lIjoiQ29keSBMYXVnaGxhbmQiLCJhdXRob3JQaG90b1VybCI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BTFYtVWpVbjNWNlM4MW1FdUhYcUJTVlZIT1ZUNFlaU1NLNXhzLTR6MTRlc3FCaVdiZnVzNEljUj1zMTI4LWMweDAwMDAwMDAwLWNjLXJwLW1vIiwicmF0aW5nIjowLCJ0ZXh0IjoiIn1dfQ=="></script>
+  <!-- Google Review Badge by Shapo.io -->
+  <script src="https://cdn.shapo.io/js/google-badge-loader.js" data-settings="eyJwbGFjZUlkIjoiQ2hJSmtWV1M4ZmZWN1FvUkJWellKOUJSamJjIiwicGxhY2VOYW1lIjoiVGhlIEdlbnRsZW1lbidzIFF1YXJ0ZXJzIGJ5IEN5bnRoaWEgUml2ZXJhIC0gQmFyYmVyc2hvcCBpbiBBdXN0aW4iLCJwbGFjZUFkZHJlc3MiOiJJbnNpZGUgUGhlbml4IHNhbG9uIHN1aXRlcywgMTQwMDUgVVMtMTgzIHN1aXRlIDEyMDAsIEF1c3RpbiwgVFggNzg3MTcsIFVTQSIsInJhdGluZyI6NSwicmV2aWV3Q291bnQiOjY0LCJwb3NpdGlvbiI6ImJvdHRvbS1yaWdodCIsInRlbXBsYXRlIjoiZGFyayIsImJ1dHRvblRleHQiOiJMZWF2ZSBhIFJldmlldyIsImJ1dHRvbkNvbG9yIjoiIzU0NTQ1NCIsInJldmlld3MiOlt7ImF1dGhvck5hbWUiOiJKYWtlIExlcGFnZSIsImF1dGhvclBob3RvVXJsIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FMVi1ValdEZ2c0N0ptVGlqOHppNVFTSnlqc1h2OThsQV84aWJOR01Sa1Q4VTFlM29wcFFhREE9czEyOC1jMHgwMDAwMDAwMC1jYy1ycC1tbyIsInJhdGluZyI6MCwidGV4dCI6IiJ9LHsiYXV0aGhvck5hbWUiOiIlRqIE1hcmVrIiwiYXV0aGhvclBob3RvVXJsIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvLS9BTFYtVWpX...snip...In1dfQ=="></script>
 </body>
 </html>
