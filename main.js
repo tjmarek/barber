@@ -1,5 +1,5 @@
 /* ============================================================
-   THE GENTLEMEN'S QUARTERS — main.js
+   THE GENTLEMEN'S QUARTERS BARBER — main.js
    ============================================================ */
 
 (function () {
